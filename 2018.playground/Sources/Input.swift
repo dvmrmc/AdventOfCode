@@ -9,7 +9,7 @@ public class Input {
             let lines =  contents.components(separatedBy: "\n").filter{$0 != ""}
             return lines
         } catch {
-            print("Error happened while reading input file \(file)")
+            Logger.log("Error happened while reading input file \(file)")
         }
         return [String]()
     }

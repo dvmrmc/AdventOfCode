@@ -4,23 +4,18 @@ public class Day_1 {
 
     public static var data: [Int] = Input.read(file: "day1")
     
-    public static func exercise_1() {
+    public static func exercise_1() -> Int {
         
         var frequency = 0
-        defer { print("Final frequency is: \(frequency)") }
         for change in data {
             let newFrequency = frequency + change
-            print("Current frequency: \(frequency) with change of: \(change) results in frequency: \(newFrequency)")
+            Logger.log("Current frequency: \(frequency) with change of: \(change) results in frequency: \(newFrequency)")
             frequency = newFrequency
         }
-        
+        return frequency
     }
     
-    //================================
-    // PART 2 (not stopping D:)
-    //================================
-    
-    public static func exercise_2() {
+    public static func exercise_2() -> Int {
         
         var searching = true
         var frequency = 0
@@ -30,12 +25,12 @@ public class Day_1 {
         while searching {
             let change = data[index]
             let newFrequency = frequency + change
-            print("Current frequency: \(frequency) with change of: \(change) results in frequency: \(newFrequency)")
+            Logger.log("Current frequency: \(frequency) with change of: \(change) results in frequency: \(newFrequency)")
             frequency = newFrequency
             if (seen.contains(frequency)) { searching = false }
             seen.insert(frequency)
             index = (index + 1) % data.count // Keep index within bounds of changes
         }
-        print("First frequency reached twice is: \(frequency)")
+        return frequency
     }
 }
